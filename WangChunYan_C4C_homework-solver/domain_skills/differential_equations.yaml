@@ -1,0 +1,83 @@
+# ============================================================
+# T-box: Ordinary Differential Equations（常微分方程）
+# ============================================================
+# C4C 扩展领域：从「微积分极限」扩展到「微分方程」。
+# Oracle 来源：同济《高等数学》(微分方程一章) + Boyce《常微分方程》
+# ============================================================
+
+domain: differential_equations
+version: "1.0"
+
+oracle_sources:
+  - type: textbook
+    ref: "同济大学数学系《高等数学》上册 微分方程"
+    authority: primary
+    distilled_knowledge:
+      - "一阶线性方程 y' + P(x)y = Q(x)：积分因子法"
+      - "一阶可分离变量：分离后两边积分"
+      - "二阶常系数齐次：特征方程 r^2 + ar + b = 0"
+      - "实根/重根/复根三种通解形式"
+      - "初值问题：代入初值定常数"
+
+concepts:
+  - id: first_order_ode
+    type: concept
+    name: "一阶常微分方程"
+    formal: "y' + P(x)y = Q(x)，积分因子 μ = e^{∫P dx}"
+    prerequisites: []
+    keywords: [微分方程, differential equation, dy/dx, 一阶, first order]
+
+  - id: second_order_ode
+    type: concept
+    name: "二阶常系数线性微分方程"
+    formal: "y'' + ay' + by = 0，特征方程 r^2 + ar + b = 0"
+    prerequisites: [first_order_ode]
+    keywords: [二阶, second order, y'']
+
+  - id: ode_ivp
+    type: concept
+    name: "初值问题 (IVP)"
+    formal: "ODE + 初始条件 y(x0)=y0, y'(x0)=y1"
+    prerequisites: [first_order_ode, second_order_ode]
+    keywords: [初值, initial condition, y(0), 满足]
+
+solution_methods:
+  - id: ode_first_order_solver
+    type: solution_method
+    concept: first_order_ode
+    name: "一阶 ODE 求解"
+    applies_when: "y' + P(x)y = Q(x)"
+    tool: sympy
+    solver_template: sympy_solvers/ode_first_order.py
+
+  - id: ode_second_order_solver
+    type: solution_method
+    concept: second_order_ode
+    name: "二阶常系数 ODE 求解"
+    applies_when: "y'' + ay' + by = 0 或含初值"
+    tool: sympy
+    solver_template: sympy_solvers/ode_second_order.py
+
+classification_rules:
+  - priority: 95
+    pattern:
+      text_contains: ["微分方程", "differential equation", "dy/dx", "y''", "y'''", "二阶"]
+    maps_to: second_order_ode
+    solver: ode_second_order_solver
+
+  - priority: 90
+    pattern:
+      text_contains: ["微分方程", "differential equation", "dy/dx", "y'", "一阶"]
+    maps_to: first_order_ode
+    solver: ode_first_order_solver
+
+  - priority: 80
+    pattern:
+      has_ode_expression: true
+    maps_to: first_order_ode
+    solver: ode_first_order_solver
+
+validation_rules:
+  ode:
+    - type: substitution_check
+      rule: "将解代入原方程与初值，恒成立"

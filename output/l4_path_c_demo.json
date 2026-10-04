@@ -1,0 +1,91 @@
+{
+  "engine": "offline（离线定理模板）",
+  "templates": [
+    "det_inverse_proof",
+    "det_product_proof",
+    "eigen_independence_proof",
+    "linear_system_structure",
+    "matrix_invertibility_criteria",
+    "ode_existence_uniqueness",
+    "ode_solution_structure",
+    "rank_nullity_theorem",
+    "trace_det_eigen_check"
+  ],
+  "sympy_only_solved": 0,
+  "llm_augmented_solved": 9,
+  "total": 9,
+  "rows": [
+    {
+      "id": "D1",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:det_inverse_proof",
+      "llm_answer": "\\det(A^{-1}) = \\frac{1}{\\det(A)}"
+    },
+    {
+      "id": "D2",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:det_product_proof",
+      "llm_answer": "\\det(AB) = \\det(A)\\det(B)"
+    },
+    {
+      "id": "D3",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:eigen_independence_proof",
+      "llm_answer": "\\text{不同特征值对应的特征向量线性无关}"
+    },
+    {
+      "id": "D4",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:rank_nullity_theorem",
+      "llm_answer": "\\operatorname{rank}(A) + \\dim(\\ker A) = n"
+    },
+    {
+      "id": "D5",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:matrix_invertibility_criteria",
+      "llm_answer": "A \\text{ 可逆} \\iff \\det(A)\\neq 0 \\iff \\operatorname{rank}(A)=n \\iff \\text{列向量线性无关}"
+    },
+    {
+      "id": "D6",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:linear_system_structure",
+      "llm_answer": "\\text{无解} \\iff r(A)<r([A|b]);\\quad \\text{唯一解} \\iff r(A)=r([A|b])=n"
+    },
+    {
+      "id": "D7",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:ode_existence_uniqueness",
+      "llm_answer": "f,\\ \\partial f/\\partial y \\text{ 连续} \\Rightarrow \\text{IVP 局部存在且唯一}"
+    },
+    {
+      "id": "D8",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:ode_solution_structure",
+      "llm_answer": "y = y_h + y_p \\quad (y_h \\text{ 为齐次通解}, y_p \\text{ 为非齐次特解})"
+    },
+    {
+      "id": "D9",
+      "sympy_only_solved": false,
+      "sympy_only_reason": "题目无可计算的数学表达式（概念题或需要 LLM）",
+      "llm_solved": true,
+      "llm_solver": "offline_template:trace_det_eigen_check",
+      "llm_answer": "\\sum\\lambda_i=\\operatorname{tr}(A),\\qquad \\prod\\lambda_i=\\det(A)"
+    }
+  ]
+}

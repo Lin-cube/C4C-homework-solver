@@ -1,0 +1,298 @@
+\documentclass[12pt, a4paper]{ctexart}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\geometry{margin=1in}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{线性代数与微分方程}
+\lhead{Wang ChunYan}
+\rfoot{Page \thepage}
+
+\newcommand{\problem}[1]{\subsection*{第 #1 题}}
+\newcommand{\solution}{\paragraph{解.}}
+
+\definecolor{solutioncolor}{RGB}{0, 100, 0}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries 线性代数与微分方程 作业解答} \\[0.5em]
+    {\large 线性代数与微分方程} \\[0.3em]
+    Wang ChunYan \quad | \quad 2026-10-04
+\end{center}
+
+\hrule
+\vspace{1em}
+\problem{1}
+
+计算行列式
+
+设三阶方阵
+
+$$
+A = \begin{pmatrix} 3 & 1 & 1 \\ 1 & 3 & 1 \\ 1 & 1 & 3 \end{pmatrix}
+$$
+
+求行列式 $\det(A)$ 的值。
+
+---
+
+\solution
+
+对矩阵 $A = \begin{bmatrix}3 & 1 & 1 \\ 1 & 3 & 1 \\ 1 & 1 & 3\end{bmatrix}$ 计算行列式
+
+$\det(A) = 20$
+
+\textbf{Answer:}
+\[\boxed{20}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{2}
+
+求逆矩阵
+
+设矩阵
+
+$$
+A = \begin{pmatrix} 2 & 1 \\ 1 & 1 \end{pmatrix}
+$$
+
+判断 $A$ 是否可逆；若可逆，求其逆矩阵 $A^{-1}$。
+
+---
+
+\solution
+
+先判断可逆性：$\det(A) = 1$
+
+$\det(A) \neq 0$，故可逆。
+
+$A^{-1} = \begin{bmatrix}1 & -1 \\ -1 & 2\end{bmatrix}$
+
+\textbf{Answer:}
+\[\begin{bmatrix}1 & -1 \\ -1 & 2\end{bmatrix}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{3}
+
+求解线性方程组
+
+求解线性方程组 $Ax = b$，其中
+
+$$
+A = \begin{pmatrix} 1 & 1 & 1 \\ 2 & -1 & 1 \\ 1 & 2 & -1 \end{pmatrix}, \quad
+b = \begin{pmatrix} 6 \\ 3 \\ 2 \end{pmatrix}
+$$
+
+即：
+
+$$
+\begin{cases} x + y + z = 6 \\ 2x - y + z = 3 \\ x + 2y - z = 2 \end{cases}
+$$
+
+---
+
+\solution
+
+系数矩阵 $A = \begin{bmatrix}1 & 1 & 1 \\ 2 & -1 & 1 \\ 1 & 2 & -1\end{bmatrix}$，右端 $b = \begin{bmatrix}6 \\ 3 \\ 2\end{bmatrix}$
+
+增广矩阵行最简形：$\left[\begin{matrix}1 & 0 & 0 & 1\\0 & 1 & 0 & 2\\0 & 0 & 1 & 3\end{matrix}\right]$
+
+唯一解：$x = 1,\ y = 2,\ z = 3$
+
+\textbf{Answer:}
+\[\boxed{x = 1,\ y = 2,\ z = 3}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{4}
+
+求特征值与特征向量
+
+设矩阵
+
+$$
+A = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}
+$$
+
+求 $A$ 的全部特征值与对应的特征向量。
+
+---
+
+\solution
+
+特征多项式：$\det(A - \lambda I) = \lambda^{2} - 4 \lambda + 3 = 0$
+
+特征值 $\lambda = 1$（代数重数 1）
+
+对应特征向量：$\begin{bmatrix}-1 \\ 1\end{bmatrix}$
+
+特征值 $\lambda = 3$（代数重数 1）
+
+对应特征向量：$\begin{bmatrix}1 \\ 1\end{bmatrix}$
+
+\textbf{Answer:}
+\[\boxed{\lambda = 1,\ \lambda = 3}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{5}
+
+矩阵乘法
+
+设
+
+$$
+A = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}, \quad
+B = \begin{pmatrix} 5 & 6 \\ 7 & 8 \end{pmatrix}
+$$
+
+计算矩阵乘积 $AB$。
+
+---
+
+\solution
+
+$A = \begin{bmatrix}1 & 2 \\ 3 & 4\end{bmatrix}$，$B = \begin{bmatrix}5 & 6 \\ 7 & 8\end{bmatrix}$
+
+$AB = \begin{bmatrix}19 & 22 \\ 43 & 50\end{bmatrix}$
+
+\textbf{Answer:}
+\[\begin{bmatrix}19 & 22 \\ 43 & 50\end{bmatrix}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{6}
+
+求矩阵的秩
+
+设矩阵
+
+$$
+A = \begin{pmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9 \end{pmatrix}
+$$
+
+求 $\operatorname{rank}(A)$。
+
+---
+
+\solution
+
+对矩阵 $A = \begin{bmatrix}1 & 2 & 3 \\ 4 & 5 & 6 \\ 7 & 8 & 9\end{bmatrix}$ 做初等行变换
+
+行阶梯形：$\left[\begin{matrix}1 & 0 & -1\\0 & 1 & 2\\0 & 0 & 0\end{matrix}\right]$
+
+$\operatorname{rank}(A) = 2$
+
+\textbf{Answer:}
+\[\boxed{2}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{7}
+
+一阶线性微分方程（初值问题）
+
+求解初值问题：
+
+$$
+y' + y = e^{x}, \qquad y(0) = 1
+$$
+
+---
+
+\solution
+
+微分方程：$y{\left(x \right)} - e^{x} + \frac{d}{d x} y{\left(x \right)} = 0$
+
+初值条件：$y{\left(0 \right)} = 1$
+
+解：$y(x) = \cosh{\left(x \right)}$
+
+\textbf{Answer:}
+\[\boxed{y(x) = \cosh{\left(x \right)}}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{8}
+
+二阶常系数齐次微分方程（初值问题）
+
+求解初值问题：
+
+$$
+y'' - 3y' + 2y = 0, \qquad y(0) = 1, \quad y'(0) = 0
+$$
+
+---
+
+\solution
+
+微分方程：$2 y{\left(x \right)} - 3 \frac{d}{d x} y{\left(x \right)} + \frac{d^{2}}{d x^{2}} y{\left(x \right)} = 0$
+
+初值条件：$\left. \frac{d}{d x} y{\left(x \right)} \right|_{\substack{ x=0 }} = 0$
+
+初值条件：$y{\left(0 \right)} = 1$
+
+解：$y(x) = \left(2 - e^{x}\right) e^{x}$
+
+\textbf{Answer:}
+\[\boxed{y(x) = \left(2 - e^{x}\right) e^{x}}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+\problem{9}
+
+证明题
+
+证明：若 $n$ 阶方阵 $A$ 可逆，则
+
+$$
+\det(A^{-1}) = \frac{1}{\det(A)}
+$$
+
+\solution
+
+由矩阵可逆的定义：$AA^{-1} = I$，其中 $I$ 是单位矩阵。
+
+对等式两边同时取行列式：$\det(AA^{-1}) = \det(I) = 1$。
+
+由行列式的乘法性质 $\det(AB) = \det(A)\det(B)$，得 $\det(A)\det(A^{-1}) = 1$。
+
+因 $A$ 可逆，$\det(A) \neq 0$，故 $\det(A^{-1}) = \dfrac{1}{\det(A)}$。$\blacksquare$
+
+\textbf{Answer:}
+\[\boxed{\det(A^{-1}) = \frac{1}{\det(A)}}\]
+
+\vspace{1em}
+\hrule
+\vspace{1em}
+
+
+\vspace{2em}
+\noindent\textit{Auto-generated: 9/9 problems solved by SymPy.}
+\end{document}

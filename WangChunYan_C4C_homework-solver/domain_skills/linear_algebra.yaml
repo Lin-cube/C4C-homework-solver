@@ -1,0 +1,177 @@
+# ============================================================
+# T-box: Linear Algebra（线性代数）
+# ============================================================
+# C4C 扩展领域：从「微积分极限」扩展到「线性代数」。
+# Oracle 来源：David C. Lay《线性代数及其应用》+ 同济《线性代数》
+#
+# 说明：本文件定义的 concept / solution_method / classification_rules
+# 会被 classify.py 与 calculus_limits.yaml 一起加载，形成「多领域 T-box」。
+# ============================================================
+
+domain: linear_algebra
+version: "1.0"
+
+oracle_sources:
+  - type: textbook
+    ref: "David C. Lay, Linear Algebra and Its Applications, 5th ed."
+    authority: primary
+  - type: textbook
+    ref: "同济大学数学系《线性代数》(第六版)"
+    authority: primary
+    distilled_knowledge:
+      - "行列式按行/列展开（余子式、代数余子式）"
+      - "逆矩阵：AA^{-1}=I，det(A)!=0 时可逆"
+      - "克拉默法则与线性方程组唯一解的判据"
+      - "特征值/特征向量：Av=lambda v，特征多项式 det(A-lambda I)=0"
+      - "矩阵的秩 = 行秩 = 列秩；rank-nullity 定理"
+      - "转置性质：(AB)^T = B^T A^T"
+      - "可对角化：n 个线性无关的特征向量"
+
+concepts:
+  - id: matrix_basics
+    type: concept
+    name: "矩阵基本概念"
+    formal: "m×n 数表，加减法、数乘、转置"
+    prerequisites: []
+    keywords: [矩阵, matrix, 转置, transpose]
+
+  - id: matrix_determinant
+    type: concept
+    name: "行列式"
+    formal: "det(A)，方阵对应的标量；按行/列展开计算"
+    prerequisites: [matrix_basics]
+    keywords: [行列式, determinant, det]
+
+  - id: matrix_inverse
+    type: concept
+    name: "逆矩阵"
+    formal: "A^{-1}：AA^{-1}=A^{-1}A=I；det(A)!=0 时可逆"
+    prerequisites: [matrix_determinant]
+    keywords: [逆矩阵, inverse, 可逆, 逆]
+
+  - id: linear_system
+    type: concept
+    name: "线性方程组"
+    formal: "Ax = b；解的结构：唯一解 / 无穷多解 / 无解"
+    prerequisites: [matrix_basics]
+    keywords: [方程组, linear system, 解方程, solve the system]
+
+  - id: eigenvalue
+    type: concept
+    name: "特征值与特征向量"
+    formal: "Av = λv；特征多项式 det(A - λI) = 0"
+    prerequisites: [matrix_determinant]
+    keywords: [特征值, 特征向量, eigenvalue, eigenvector, 对角化]
+
+  - id: matrix_rank
+    type: concept
+    name: "矩阵的秩"
+    formal: "rank(A) = 行秩 = 列秩 = 非零行阶梯形行数"
+    prerequisites: [matrix_basics]
+    keywords: [秩, rank]
+
+solution_methods:
+  - id: matrix_determinant_solver
+    type: solution_method
+    concept: matrix_determinant
+    name: "行列式计算"
+    applies_when: "给定方阵求 det"
+    tool: sympy
+    solver_template: sympy_solvers/matrix_ops.py
+
+  - id: matrix_inverse_solver
+    type: solution_method
+    concept: matrix_inverse
+    name: "逆矩阵计算"
+    applies_when: "给定可逆方阵求 A^{-1}"
+    tool: sympy
+    solver_template: sympy_solvers/matrix_ops.py
+
+  - id: linear_system_solver
+    type: solution_method
+    concept: linear_system
+    name: "线性方程组求解"
+    applies_when: "解 Ax=b"
+    tool: sympy
+    solver_template: sympy_solvers/linear_system.py
+
+  - id: eigen_solver
+    type: solution_method
+    concept: eigenvalue
+    name: "特征值与特征向量"
+    applies_when: "求特征值/特征向量"
+    tool: sympy
+    solver_template: sympy_solvers/eigen.py
+
+  - id: matrix_rank_solver
+    type: solution_method
+    concept: matrix_rank
+    name: "矩阵的秩"
+    applies_when: "求 rank(A)"
+    tool: sympy
+    solver_template: sympy_solvers/matrix_ops.py
+
+  - id: matrix_ops_solver
+    type: solution_method
+    concept: matrix_basics
+    name: "矩阵运算（乘法/转置）"
+    applies_when: "矩阵乘法、转置"
+    tool: sympy
+    solver_template: sympy_solvers/matrix_ops.py
+
+classification_rules:
+  - priority: 100
+    pattern:
+      text_contains: ["特征值", "特征向量", "eigenvalue", "eigenvector", "对角化"]
+    maps_to: eigenvalue
+    solver: eigen_solver
+
+  - priority: 96
+    pattern:
+      text_contains: ["行列式", "determinant", "det("]
+    maps_to: matrix_determinant
+    solver: matrix_determinant_solver
+
+  - priority: 92
+    pattern:
+      text_contains: ["逆矩阵", "inverse", "可逆矩阵", "a^{-1}"]
+    maps_to: matrix_inverse
+    solver: matrix_inverse_solver
+
+  - priority: 88
+    pattern:
+      text_contains: ["秩", "rank"]
+    maps_to: matrix_rank
+    solver: matrix_rank_solver
+
+  - priority: 84
+    pattern:
+      text_contains: ["方程组", "linear system", "解方程组", "solve the system"]
+    maps_to: linear_system
+    solver: linear_system_solver
+
+  - priority: 76
+    pattern:
+      text_contains: ["矩阵", "matrix", "转置", "transpose", "乘积", "乘法"]
+    maps_to: matrix_basics
+    solver: matrix_ops_solver
+
+  - priority: 70
+    pattern:
+      has_matrix_expression: true
+    maps_to: matrix_basics
+    solver: matrix_ops_solver
+
+validation_rules:
+  matrix_determinant:
+    - type: scalar_check
+      rule: "结果是标量，且 det(A)det(A^{-1})=1"
+  matrix_inverse:
+    - type: identity_check
+      rule: "A * A^{-1} = I"
+  linear_system:
+    - type: substitution_check
+      rule: "解代入 Ax=b 恒成立"
+  eigenvalue:
+    - type: av_lambda_v_check
+      rule: "对每个特征值 λ，存在非零 v 使 Av=λv"

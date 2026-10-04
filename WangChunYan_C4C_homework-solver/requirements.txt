@@ -1,0 +1,24 @@
+# C4C 作业自动求解与排版 —— 依赖清单
+#
+# 核心依赖（必需）
+sympy>=1.12          # 符号计算引擎（求解器核心）
+pyyaml>=6.0          # 领域知识 T-box（YAML）
+
+# PDF 渲染依赖（--pdf 必需，无需 TeX Live）
+matplotlib>=3.5      # 用 matplotlib 直接生成 PDF（中文字体 + mathtext 数学）
+
+# 扩展输入格式（可选，按需取消注释）
+# python-docx>=0.8    # Word (.docx) 摄入
+# pypdf>=3.0          # 文本型 PDF 摄入（轻量，纯 Python）
+# pdfplumber>=0.9     # 更精确的 PDF 文本/表格提取
+# pytesseract>=0.3    # 扫描件 OCR（需本机 Tesseract）
+# Pillow>=10.0        # 图片处理
+
+# 国产大模型（可选，用 urllib 直连 OpenAI 兼容端点，无需 openai 库）
+#   设置环境变量即可：
+#     LLM_PROVIDER=qwen    DASHSCOPE_API_KEY=sk-...      （通义千问）
+#     LLM_PROVIDER=kimi    MOONSHOT_API_KEY=sk-...       （Kimi）
+#     LLM_PROVIDER=deepseek DEEPSEEK_API_KEY=sk-...      （DeepSeek）
+
+# 中文 LaTeX 编译（可选，--compile + ctexart 需要 XeLaTeX + Noto CJK 字体）
+# Windows: https://miktex.org/download  |  macOS: brew install --cask mactex-no-gui

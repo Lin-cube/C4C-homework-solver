@@ -1,0 +1,175 @@
+[
+  {
+    "problem_id": "1",
+    "problem_text": "计算行列式\n\n设三阶方阵\n\n$$\nA = \\begin{pmatrix} 3 & 1 & 1 \\\\ 1 & 3 & 1 \\\\ 1 & 1 & 3 \\end{pmatrix}\n$$\n\n求行列式 $\\det(A)$ 的值。\n\n---",
+    "solved": true,
+    "steps": [
+      "对矩阵 $A = \\begin{bmatrix}3 & 1 & 1 \\\\ 1 & 3 & 1 \\\\ 1 & 1 & 3\\end{bmatrix}$ 计算行列式",
+      "$\\det(A) = 20$"
+    ],
+    "answer": "det(A) = 20",
+    "answer_latex": "20",
+    "answer_plain": "det(A) = 20",
+    "answer_type": "scalar",
+    "answer_matrix": null,
+    "solver": "sympy_det",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "2",
+    "problem_text": "求逆矩阵\n\n设矩阵\n\n$$\nA = \\begin{pmatrix} 2 & 1 \\\\ 1 & 1 \\end{pmatrix}\n$$\n\n判断 $A$ 是否可逆；若可逆，求其逆矩阵 $A^{-1}$。\n\n---",
+    "solved": true,
+    "steps": [
+      "先判断可逆性：$\\det(A) = 1$",
+      "$\\det(A) \\neq 0$，故可逆。",
+      "$A^{-1} = \\begin{bmatrix}1 & -1 \\\\ -1 & 2\\end{bmatrix}$"
+    ],
+    "answer": "A^{-1} = 见上",
+    "answer_latex": "\\begin{bmatrix}1 & -1 \\\\ -1 & 2\\end{bmatrix}",
+    "answer_plain": "A^{-1} = 见上",
+    "answer_type": "matrix",
+    "answer_matrix": [
+      [
+        "1",
+        "-1"
+      ],
+      [
+        "-1",
+        "2"
+      ]
+    ],
+    "solver": "sympy_inv",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "3",
+    "problem_text": "求解线性方程组\n\n求解线性方程组 $Ax = b$，其中\n\n$$\nA = \\begin{pmatrix} 1 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 1 & 2 & -1 \\end{pmatrix}, \\quad\nb = \\begin{pmatrix} 6 \\\\ 3 \\\\ 2 \\end{pmatrix}\n$$\n\n即：\n\n$$\n\\begin{cases} x + y + z = 6 \\\\ 2x - y + z = 3 \\\\ x + 2y - z = 2 \\end{cases}\n$$\n\n---",
+    "solved": true,
+    "steps": [
+      "系数矩阵 $A = \\begin{bmatrix}1 & 1 & 1 \\\\ 2 & -1 & 1 \\\\ 1 & 2 & -1\\end{bmatrix}$，右端 $b = \\begin{bmatrix}6 \\\\ 3 \\\\ 2\\end{bmatrix}$",
+      "增广矩阵行最简形：$\\left[\\begin{matrix}1 & 0 & 0 & 1\\\\0 & 1 & 0 & 2\\\\0 & 0 & 1 & 3\\end{matrix}\\right]$",
+      "唯一解：$x = 1,\\ y = 2,\\ z = 3$"
+    ],
+    "answer": "x = 1,  y = 2,  z = 3",
+    "answer_latex": "x = 1,\\ y = 2,\\ z = 3",
+    "answer_plain": "x = 1,  y = 2,  z = 3",
+    "answer_type": "text",
+    "answer_matrix": null,
+    "solver": "sympy_linsolve",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "4",
+    "problem_text": "求特征值与特征向量\n\n设矩阵\n\n$$\nA = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}\n$$\n\n求 $A$ 的全部特征值与对应的特征向量。\n\n---",
+    "solved": true,
+    "steps": [
+      "特征多项式：$\\det(A - \\lambda I) = \\lambda^{2} - 4 \\lambda + 3 = 0$",
+      "特征值 $\\lambda = 1$（代数重数 1）",
+      "对应特征向量：$\\begin{bmatrix}-1 \\\\ 1\\end{bmatrix}$",
+      "特征值 $\\lambda = 3$（代数重数 1）",
+      "对应特征向量：$\\begin{bmatrix}1 \\\\ 1\\end{bmatrix}$"
+    ],
+    "answer": "λ = 1;  λ = 3",
+    "answer_latex": "\\lambda = 1,\\ \\lambda = 3",
+    "answer_plain": "λ = 1;  λ = 3",
+    "answer_type": "text",
+    "answer_matrix": null,
+    "solver": "sympy_eigen",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "5",
+    "problem_text": "矩阵乘法\n\n设\n\n$$\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\quad\nB = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n$$\n\n计算矩阵乘积 $AB$。\n\n---",
+    "solved": true,
+    "steps": [
+      "$A = \\begin{bmatrix}1 & 2 \\\\ 3 & 4\\end{bmatrix}$，$B = \\begin{bmatrix}5 & 6 \\\\ 7 & 8\\end{bmatrix}$",
+      "$AB = \\begin{bmatrix}19 & 22 \\\\ 43 & 50\\end{bmatrix}$"
+    ],
+    "answer": "AB = 见上",
+    "answer_latex": "\\begin{bmatrix}19 & 22 \\\\ 43 & 50\\end{bmatrix}",
+    "answer_plain": "AB = 见上",
+    "answer_type": "matrix",
+    "answer_matrix": [
+      [
+        "19",
+        "22"
+      ],
+      [
+        "43",
+        "50"
+      ]
+    ],
+    "solver": "sympy_matmul",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "6",
+    "problem_text": "求矩阵的秩\n\n设矩阵\n\n$$\nA = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}\n$$\n\n求 $\\operatorname{rank}(A)$。\n\n---",
+    "solved": true,
+    "steps": [
+      "对矩阵 $A = \\begin{bmatrix}1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9\\end{bmatrix}$ 做初等行变换",
+      "行阶梯形：$\\left[\\begin{matrix}1 & 0 & -1\\\\0 & 1 & 2\\\\0 & 0 & 0\\end{matrix}\\right]$",
+      "$\\operatorname{rank}(A) = 2$"
+    ],
+    "answer": "rank(A) = 2",
+    "answer_latex": "2",
+    "answer_plain": "rank(A) = 2",
+    "answer_type": "scalar",
+    "answer_matrix": null,
+    "solver": "sympy_rank",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "7",
+    "problem_text": "一阶线性微分方程（初值问题）\n\n求解初值问题：\n\n$$\ny' + y = e^{x}, \\qquad y(0) = 1\n$$\n\n---",
+    "solved": true,
+    "steps": [
+      "微分方程：$y{\\left(x \\right)} - e^{x} + \\frac{d}{d x} y{\\left(x \\right)} = 0$",
+      "初值条件：$y{\\left(0 \\right)} = 1$",
+      "解：$y(x) = \\cosh{\\left(x \\right)}$"
+    ],
+    "answer": "y(x) = cosh(x)",
+    "answer_latex": "y(x) = \\cosh{\\left(x \\right)}",
+    "answer_plain": "y(x) = cosh(x)",
+    "answer_type": "text",
+    "answer_matrix": null,
+    "solver": "sympy_dsolve",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "8",
+    "problem_text": "二阶常系数齐次微分方程（初值问题）\n\n求解初值问题：\n\n$$\ny'' - 3y' + 2y = 0, \\qquad y(0) = 1, \\quad y'(0) = 0\n$$\n\n---",
+    "solved": true,
+    "steps": [
+      "微分方程：$2 y{\\left(x \\right)} - 3 \\frac{d}{d x} y{\\left(x \\right)} + \\frac{d^{2}}{d x^{2}} y{\\left(x \\right)} = 0$",
+      "初值条件：$\\left. \\frac{d}{d x} y{\\left(x \\right)} \\right|_{\\substack{ x=0 }} = 0$",
+      "初值条件：$y{\\left(0 \\right)} = 1$",
+      "解：$y(x) = \\left(2 - e^{x}\\right) e^{x}$"
+    ],
+    "answer": "y(x) = (2 - exp(x))*exp(x)",
+    "answer_latex": "y(x) = \\left(2 - e^{x}\\right) e^{x}",
+    "answer_plain": "y(x) = (2 - exp(x))*exp(x)",
+    "answer_type": "text",
+    "answer_matrix": null,
+    "solver": "sympy_dsolve",
+    "sub_solutions": []
+  },
+  {
+    "problem_id": "9",
+    "problem_text": "证明题\n\n证明：若 $n$ 阶方阵 $A$ 可逆，则\n\n$$\n\\det(A^{-1}) = \\frac{1}{\\det(A)}\n$$",
+    "solved": true,
+    "steps": [
+      "由矩阵可逆的定义：$AA^{-1} = I$，其中 $I$ 是单位矩阵。",
+      "对等式两边同时取行列式：$\\det(AA^{-1}) = \\det(I) = 1$。",
+      "由行列式的乘法性质 $\\det(AB) = \\det(A)\\det(B)$，得 $\\det(A)\\det(A^{-1}) = 1$。",
+      "因 $A$ 可逆，$\\det(A) \\neq 0$，故 $\\det(A^{-1}) = \\dfrac{1}{\\det(A)}$。$\\blacksquare$"
+    ],
+    "answer": "\\det(A^{-1}) = \\frac{1}{\\det(A)}",
+    "answer_latex": "\\det(A^{-1}) = \\frac{1}{\\det(A)}",
+    "answer_plain": "\\det(A^{-1}) = \\frac{1}{\\det(A)}",
+    "answer_type": "text",
+    "solver": "offline_template:det_inverse_proof",
+    "template_id": "det_inverse_proof",
+    "sub_solutions": []
+  }
+]

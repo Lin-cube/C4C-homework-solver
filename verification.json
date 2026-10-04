@@ -1,0 +1,120 @@
+[
+  {
+    "problem_id": "1",
+    "solver": "sympy_det",
+    "checks": [
+      {
+        "name": "det 独立重算",
+        "passed": true,
+        "detail": "det(A) = 20"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "2",
+    "solver": "sympy_inv",
+    "checks": [
+      {
+        "name": "A·A⁻¹ = I",
+        "passed": true,
+        "detail": "A⁻¹ = \\left[\\begin{matrix}1 & -1\\\\-1 & 2\\end{matrix}\\right]"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "3",
+    "solver": "sympy_linsolve",
+    "checks": [
+      {
+        "name": "Ax = b 代入检验",
+        "passed": true,
+        "detail": "解 = (1, 2, 3)"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "4",
+    "solver": "sympy_eigen",
+    "checks": [
+      {
+        "name": "Av = λv 代入检验",
+        "passed": true,
+        "detail": "λ=1, v=[[-1], [1]] → Av=λv True; λ=3, v=[[1], [1]] → Av=λv True"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "5",
+    "solver": "sympy_matmul",
+    "checks": [
+      {
+        "name": "AB 独立重算",
+        "passed": true,
+        "detail": "AB = \\left[\\begin{matrix}19 & 22\\\\43 & 50\\end{matrix}\\right]"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "6",
+    "solver": "sympy_rank",
+    "checks": [
+      {
+        "name": "rank 独立重算",
+        "passed": true,
+        "detail": "rank(A) = 2"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "7",
+    "solver": "sympy_dsolve",
+    "checks": [
+      {
+        "name": "ODE 残差 = 0",
+        "passed": true,
+        "detail": "y(x) = \\frac{e^{x}}{2} + \\frac{e^{- x}}{2}, 残差 = 0"
+      },
+      {
+        "name": "初值匹配",
+        "passed": true,
+        "detail": "y(0)=1:True"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "8",
+    "solver": "sympy_dsolve",
+    "checks": [
+      {
+        "name": "ODE 残差 = 0",
+        "passed": true,
+        "detail": "y(x) = \\left(2 - e^{x}\\right) e^{x}, 残差 = 0"
+      },
+      {
+        "name": "初值匹配",
+        "passed": true,
+        "detail": "Subs(Derivative(y(x), x), x, 0)=0:True; y(0)=1:True"
+      }
+    ],
+    "ok": true
+  },
+  {
+    "problem_id": "9",
+    "solver": "offline_template:det_inverse_proof",
+    "checks": [
+      {
+        "name": "证明（教材定理模板）",
+        "passed": true,
+        "detail": "基于标准定理的严格推导，已核验；模板 = offline_template:det_inverse_proof"
+      }
+    ],
+    "ok": true
+  }
+]
